@@ -1,9 +1,20 @@
 <script>
-	import SearchBar from './SearchBar.svelte';
+	import { stateFundingData } from '$lib/stores/dataStore';
+	import SearchBar from './SearchBar/SearchBar.svelte';
+
+	let currentState = '';
+
+	let currentStateData;
+	$: if (currentState !== '') {
+		currentStateData = $stateFundingData.find((d) => d.State === currentState);
+	}
+
+	$: console.log('main', currentState);
+	$: console.log('main', currentStateData);
 </script>
 
 <div class="container">
-	<SearchBar />
+	<SearchBar bind:currentState />
 </div>
 
 <style>

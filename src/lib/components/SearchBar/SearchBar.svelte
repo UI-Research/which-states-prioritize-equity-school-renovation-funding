@@ -1,0 +1,90 @@
+<script>
+	import { statesLookup } from '$lib/stores/dataStore';
+	import Select from 'svelte-select';
+	import IconSearch from './IconSearch.svelte';
+	import IconClose from './IconClose.svelte';
+
+	export let currentState;
+
+	const handleSelect = (event) => {
+		currentState = event.detail.value;
+	};
+
+	const handleClear = () => {
+		currentState = '';
+	};
+
+	// -- Custom Styles for Svelte Select
+	let containerStyles = `
+    width: 100%;
+    padding: 8.5px 18px;
+		width: 100%;
+		height: 50px;
+
+  `;
+
+	let inputStyles = `
+    font-weight: 400;
+		font-size: 2rem;
+		color: var(--color-neutral-darkest);
+  `;
+</script>
+
+<div class="search-wrapper">
+	<div class="title">CTA title us elementum sagi</div>
+	<div class="search-bar-container theme-overrides">
+		<Select
+			items={$statesLookup.map((d) => d.name)}
+			on:select={handleSelect}
+			on:clear={handleClear}
+			placeholder="Search for your state"
+			Icon={IconSearch}
+			iconProps={{ showIcon: currentState === '' }}
+			ClearIcon={IconClose}
+			{containerStyles}
+			{inputStyles}
+		/>
+	</div>
+</div>
+
+<style lang="scss">
+	.search-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 36px;
+	}
+
+	.title {
+		font-size: 2.4rem;
+		line-height: 137.5%;
+		font-weight: 700;
+	}
+
+	.search-bar-container {
+		width: 344px;
+		position: relative;
+		display: flex;
+		font-size: 2rem;
+		font-weight: 400;
+		color: var(--color-neutral-darkest);
+	}
+
+	.theme-overrides {
+		--placeholderColor: var(--color-neutral-darkest);
+		--clearSelectWidth: 25px;
+	}
+
+	.icon {
+		position: absolute;
+		height: 25px;
+		width: 25px;
+		top: 50%;
+		right: 12px;
+		transform: translateY(-50%);
+	}
+
+	.close-icon {
+		cursor: pointer;
+	}
+</style>
