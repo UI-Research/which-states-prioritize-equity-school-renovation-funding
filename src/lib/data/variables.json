@@ -1,0 +1,13 @@
+{
+  "color": {
+    "black": "#000000",
+    "blue": "#1696D2",
+    "blue-light": "#A2D4EC",
+    "blue-lightest": "#CFE8F3",
+    "gray": "#D2D2D2",
+    "neutral-lightest": "#F5F5F5",
+    "neutral-dark": "#9D9D9D",
+    "neutral-darker": "#696969",
+    "neutral-darkest": "#353535"
+  }
+}

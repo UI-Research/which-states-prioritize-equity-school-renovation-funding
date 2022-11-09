@@ -1,2 +1,18 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import '$styles/app.css';
+
+	import Main from '$components/Main.svelte';
+</script>
+
+<div class="content">
+	<Main />
+</div>
+
+<style>
+	.content {
+		max-width: 1200px;
+		display: flex;
+		justify-content: center;
+		margin: 60px auto;
+	}
+</style>

@@ -1,7 +1,16 @@
 import adapter from '@sveltejs/adapter-auto';
+import sveltePreprocess from 'svelte-preprocess';
+import autoprefixer from 'autoprefixer';
+
+const preprocess = sveltePreprocess({
+	postcss: {
+		plugins: [autoprefixer]
+	}
+});
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+	preprocess,
 	kit: {
 		adapter: adapter()
 	}
