@@ -1,17 +1,17 @@
 <script>
-	import { statesLookup } from '$lib/stores/dataStore';
+	import { statesLookup, currentState } from '$lib/stores/dataStore';
 	import Select from 'svelte-select';
 	import IconSearch from './IconSearch.svelte';
 	import IconClose from './IconClose.svelte';
 
-	export let currentState;
+	// export let currentState;
 
 	const handleSelect = (event) => {
-		currentState = event.detail.value;
+		currentState.set(event.detail.value);
 	};
 
 	const handleClear = () => {
-		currentState = '';
+		currentState.set('');
 	};
 
 	// -- Custom Styles for Svelte Select
@@ -20,12 +20,13 @@
     padding: 8.5px 18px;
 		width: 100%;
 		height: 50px;
-
+		border-radius: 0px;
   `;
 
 	let inputStyles = `
     font-weight: 400;
 		font-size: 2rem;
+		font-family: "Lato", Helvetica, arial, sans-serif;
 		color: var(--color-neutral-darkest);
   `;
 </script>
@@ -34,12 +35,12 @@
 	<div class="title">CTA title us elementum sagi</div>
 	<div class="search-bar-container theme-overrides">
 		<Select
-			items={$statesLookup.map((d) => d.name)}
+			items={$statesLookup.map((d) => d.name).sort()}
 			on:select={handleSelect}
 			on:clear={handleClear}
 			placeholder="Search for your state"
 			Icon={IconSearch}
-			iconProps={{ showIcon: currentState === '' }}
+			iconProps={{ showIcon: $currentState === '' }}
 			ClearIcon={IconClose}
 			{containerStyles}
 			{inputStyles}
@@ -49,6 +50,7 @@
 
 <style lang="scss">
 	.search-wrapper {
+		padding: 30px 0px;
 		display: flex;
 		justify-content: center;
 		align-items: center;

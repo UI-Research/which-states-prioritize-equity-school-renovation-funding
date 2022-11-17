@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"style": "node scripts/style-dictionary.js",
+		"ghpages": "sh scripts/deployToGithub.sh",
 		"build": "vite build",
 		"preview": "vite preview",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
@@ -12,7 +13,11 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-static": "^1.0.0-next.48",
 		"@sveltejs/kit": "next",
+		"d3-array": "^3.2.0",
+		"d3-scale": "^4.0.2",
+		"d3-shape": "^3.1.0",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
