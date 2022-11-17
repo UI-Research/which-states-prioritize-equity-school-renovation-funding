@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 # copy build dir to 'docs' dir
-rm -rf docs
-cp -r build docs
+npm run build
 git add *
 git commit -m "deploying to github pages"
 git push origin main
