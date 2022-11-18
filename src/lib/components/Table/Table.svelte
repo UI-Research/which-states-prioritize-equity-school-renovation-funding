@@ -15,14 +15,12 @@
 </script>
 
 <div class="table-container">
-	<table>
-		{#each tableData as row}
-			<tr>
-				<td class="row-label">{row.label}</td>
-				<td class="row-value">{row.value}</td>
-			</tr>
-		{/each}
-	</table>
+	{#each tableData as row}
+		<div class="row">
+			<div class="row-label">{row.label}</div>
+			<div class="row-value">{row.value}</div>
+		</div>
+	{/each}
 </div>
 
 <style lang="scss">
@@ -33,29 +31,37 @@
 		line-height: 150%;
 	}
 
-	table {
-		border-collapse: collapse;
-	}
-
-	tr {
+	.row {
+		width: 100%;
+		display: flex;
 		vertical-align: top;
 		border-top: solid 1px var(--color-gray);
+		padding: 15px 0px;
 
 		&:first-of-type {
 			border-top: none;
 		}
 	}
 
-	td {
-		padding: 15px 0px;
-	}
-
 	.row-label {
+		width: 200px;
+		flex: 1 1 0;
 		font-weight: 700;
-		width: 25%;
 	}
 
 	.row-value {
+		flex: 3 1 0;
 		padding-left: 16px;
+	}
+
+	@media screen and (max-width: 550px) {
+		.row {
+			flex-direction: column;
+		}
+
+		.row-value {
+			padding-left: 0px;
+			padding-top: 8px;
+		}
 	}
 </style>

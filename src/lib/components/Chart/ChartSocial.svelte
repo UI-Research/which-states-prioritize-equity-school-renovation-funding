@@ -1,18 +1,19 @@
 <script>
 	import { stateData, currentState } from '$stores/dataStore';
-	import { draw, fade } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
 	import { scaleLinear } from 'd3-scale';
-	import { min, max, extent } from 'd3-array';
-	import { line, curveBasis } from 'd3-shape';
+	import { line } from 'd3-shape';
+	import urbanLogo from '$assets/UrbanLogo.svg';
 
 	import { color } from '$data/variables.json';
 
-	const width = 300;
-	const height = 300;
-	const margin = { top: 40, right: 30, bottom: 40, left: 35 };
-	const innerHeight = height - margin.top - margin.bottom;
-	const innerWidth = width - margin.left - margin.right;
+	export let footnote;
+
+	const width = 1200;
+	const svgWidth = width - 60;
+	const svgHeight = 500;
+	const margin = { top: 30, right: 65, bottom: 30, left: 20 };
+	const innerHeight = svgHeight - margin.top - margin.bottom;
+	const innerWidth = svgWidth - margin.left - margin.right;
 
 	// defaults
 	const xScale = scaleLinear().domain([1995, 2015]).range([0, innerWidth]);
@@ -33,10 +34,10 @@
 </script>
 
 <div class="chart-container" style:width={`${width}px`}>
-	<div class="chart-title">Chart title here</div>
+	<div class="chart-title">Chart title here for this line chart</div>
+	<svg width={svgWidth} height={svgHeight}>
+		<!-- <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#ff0000" /> -->
 
-	<!-- CHART SVG -->
-	<svg {width} {height}>
 		<g transform={`translate(${margin.left},${margin.top})`}>
 			<!-- Background rects & Labels -->
 			<rect x="0" y="0" width={innerWidth} height={innerHeight / 2} fill={color['blue-lightest']} />
@@ -77,15 +78,13 @@
 			{#key data}
 				<path
 					class="state-line"
-					in:draw={{ duration: 1500, ease: cubicOut }}
 					d={pathLine(data)}
 					fill="none"
 					stroke={color.blue}
-					stroke-width="4"
+					stroke-width="5"
 				/>
 				<text
 					class="line-label"
-					in:fade={{ delay: 1500 }}
 					x={xScale(2015) + 3}
 					y={yScale(data.slice(-1)[0].value)}
 					dominant-baseline="middle"
@@ -104,7 +103,7 @@
 					x1={xScale(xTick)}
 					x2={xScale(xTick)}
 					y1={0}
-					y2={5}
+					y2={10}
 					stroke="#000000"
 				/>
 			{/each}
@@ -112,7 +111,7 @@
 				<text
 					class="axis-tick-label"
 					x={xScale(xTickLabel)}
-					y={10}
+					y={15}
 					text-anchor="middle"
 					dominant-baseline="hanging">{xTickLabel}</text
 				>
@@ -121,7 +120,7 @@
 
 		<!-- Y -->
 		<g transform={`translate(${margin.left},${margin.top})`}>
-			<text class="y-axis-label" x="-30" y="-10">Funding Ratio</text>
+			<text class="y-axis-label" x="-19" y="-10">Funding Ratio</text>
 			{#each yTicks as yTick}
 				<line
 					class="axis-tick"
@@ -141,33 +140,57 @@
 			{/each}
 		</g>
 	</svg>
+	<div class="logo-container">
+		<img src={urbanLogo} alt="" />
+	</div>
+	<div class="footnote">{@html footnote}</div>
 </div>
 
 <style lang="scss">
 	.chart-container {
-		margin-top: 16px;
-		// border: solid 1px #ccc;
+		padding: 20px 60px;
+		border: solid 1px #ccc;
+		background-color: white;
 	}
 
 	.chart-title {
+		font-size: 30px;
+		line-height: 41.25px;
 		font-weight: 700;
+		margin-bottom: 8px;
 	}
 
 	.bg-label {
-		font-size: 13px;
+		font-size: 18px;
 		fill: var(--color-neutral-darkest);
 	}
 
 	.line-label {
 		font-weight: 700;
+		font-size: 26px;
 	}
 
 	.axis-tick-label {
-		font-size: 13px;
+		font-size: 18px;
 		fill: var(--color-neutral-darkest);
 	}
 
 	.y-axis-label {
 		font-style: italic;
+		font-size: 20px;
+	}
+
+	.logo-container {
+		margin: 8px 0px;
+		text-align: right;
+
+		img {
+			height: 21px;
+			width: 120px;
+		}
+	}
+
+	.footnote {
+		font-size: 12px;
 	}
 </style>

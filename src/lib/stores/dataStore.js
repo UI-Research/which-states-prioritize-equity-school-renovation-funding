@@ -17,13 +17,6 @@ export const stateData = derived(
 			return {};
 		}
 
-		// tmp
-		// let funding = $stateFundingData.map((d) => ({
-		// 	...d,
-		// 	capitalexpratio_5yr: d.capitalexpratio_5yr === '' ? null : +d.capitalexpratio_5yr
-		// }));
-		// console.log('extent', extent(funding.map((d) => d.capitalexpratio_5yr)));
-
 		const state = $stateLookup.find((d) => d.name === $currentState);
 		let { name: stateName, abbrev: stateAbbrev } = state;
 

@@ -89,4 +89,20 @@
 	.close-icon {
 		cursor: pointer;
 	}
+
+	@media screen and (max-width: 550px) {
+		.search-wrapper {
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.title {
+			font-size: 2rem;
+			text-align: center;
+		}
+
+		.search-bar-container {
+			width: 100%;
+		}
+	}
 </style>

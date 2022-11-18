@@ -11,8 +11,6 @@
 <style>
 	.content {
 		max-width: 1200px;
-		display: flex;
-		justify-content: center;
 		margin: 60px auto;
 	}
 </style>
