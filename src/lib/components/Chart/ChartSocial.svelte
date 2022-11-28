@@ -7,6 +7,7 @@
 	import { color } from '$data/variables.json';
 
 	export let footnote;
+	export let sourceTxt;
 
 	const width = 1200;
 	const svgWidth = width - 60;
@@ -34,7 +35,7 @@
 </script>
 
 <div class="chart-container" style:width={`${width}px`}>
-	<div class="chart-title">Chart title here for this line chart</div>
+	<div class="chart-title">Changes in Capital Expenditures Progressivity</div>
 	<svg width={svgWidth} height={svgHeight}>
 		<!-- <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#ff0000" /> -->
 
@@ -143,7 +144,7 @@
 	<div class="logo-container">
 		<img src={urbanLogo} alt="" />
 	</div>
-	<div class="footnote">{@html footnote}</div>
+	<div class="footnote">{@html sourceTxt}<br />{@html footnote}</div>
 </div>
 
 <style lang="scss">

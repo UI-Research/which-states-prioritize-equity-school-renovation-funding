@@ -32,7 +32,7 @@
 </script>
 
 <div class="search-wrapper">
-	<div class="title">CTA title us elementum sagi</div>
+	<div class="title">Explore School Construction Funding Practices by State</div>
 	<div class="search-bar-container theme-overrides">
 		<Select
 			items={$statesLookup.map((d) => d.name).sort()}

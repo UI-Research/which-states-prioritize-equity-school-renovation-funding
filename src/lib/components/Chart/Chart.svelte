@@ -33,7 +33,7 @@
 </script>
 
 <div class="chart-container" style:width={`${width}px`}>
-	<div class="chart-title">Chart title here</div>
+	<div class="chart-title">Changes in Capital Expenditures Progressivity</div>
 
 	<!-- CHART SVG -->
 	<svg {width} {height}>

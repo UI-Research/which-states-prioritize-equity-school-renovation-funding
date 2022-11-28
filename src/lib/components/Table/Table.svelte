@@ -1,23 +1,54 @@
 <script>
 	import { currentState, stateData } from '$stores/dataStore';
+	import Tooltip from '$components/Tooltip/Tooltip.svelte';
+	export let showTooltips = true;
 
 	const keys = [
-		'State Funding Types',
-		'State Prioritization',
-		'Facility Assessment Requirements',
-		'Equity Measures'
+		{
+			name: 'State Funding Types',
+			display: 'Funding Types',
+			tooltipText:
+				'States can fund school capital projects in various ways, such as through direct grant aid, subsidized loans, or debt reimbursement, if they fund capital projects at all'
+		},
+		{
+			name: 'State Prioritization',
+			display: 'State Priorities',
+			tooltipText:
+				'States often prioritize which projects get state support. These priorities can range from health and safety concerns in buildings to supporting low-wealth districts that struggle to raise local funds.'
+		},
+		{
+			name: 'Facility Assessment Requirements',
+			display: 'Facility Assessments',
+			tooltipText:
+				'A facility or conditions assessment can help states and school districts identify construction needs. Some states require such assessments, which can be conducted by either the districts or the state.'
+		},
+		{
+			name: 'Equity Measures',
+			display: 'Equity Measures',
+			tooltipText:
+				'Some states have enacted measures that prioritize funding districts with low property wealth or high shares of students from low-income backgrounds, or for other groups of students.'
+		}
 	];
 
 	$: tableData =
 		$currentState !== ''
-			? keys.map((key) => ({ label: key, value: $stateData.gridData[key] }))
+			? keys.map((key) => ({
+					label: key.display,
+					value: $stateData.gridData[key.name],
+					tooltipText: key.tooltipText
+			  }))
 			: [];
 </script>
 
 <div class="table-container">
 	{#each tableData as row}
 		<div class="row">
-			<div class="row-label">{row.label}</div>
+			<div class="row-label">
+				{@html row.label}
+				{#if showTooltips}
+					<Tooltip tooltipText={row.tooltipText} />
+				{/if}
+			</div>
 			<div class="row-value">{row.value}</div>
 		</div>
 	{/each}

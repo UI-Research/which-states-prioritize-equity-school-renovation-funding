@@ -18,9 +18,8 @@
 		});
 	};
 
-	const footnote = `<b>Notes:</b> Figures are for full-time students from families with incomes below $30,000 who
-          received Pell grants at in-state public four-year institutions. Figures have been converted to
-          constant 2020 dollars using the Personal Consumption Expenditures Price index.`;
+	const sourceTxt = `<b>Source:</b> Urban Institute analysis of Common Core of Data and Small Area Income and Poverty Estimates data.`;
+	const footnote = `<b>Notes:</b> National data from Arizona, Iowa, Massachusetts, New Jersey, New Mexico, New York, and Rhode Island are substantially different than state-reported data and should be treated with caution. Five-year rolling averages are presented for the middle year (e.g., 2015 data are an average of data from 2013 to 2017). Data presented here are for geographic school districts only; see the report for additional context.`;
 </script>
 
 <div class="tool-container">
@@ -40,7 +39,7 @@
 				<Table />
 			</div>
 
-			<div class="footnotes-area">{@html footnote}</div>
+			<div class="footnotes-area">{@html sourceTxt}<br />{@html footnote}</div>
 		</div>
 	{/if}
 </div>
@@ -58,7 +57,7 @@
 	{#if $currentState !== ''}
 		<!-- Social Chart -->
 		<div id="social-chart">
-			<ChartSocial {footnote} />
+			<ChartSocial {sourceTxt} {footnote} />
 		</div>
 
 		<!-- Full Tool -->
@@ -72,10 +71,10 @@
 				</div>
 
 				<div class="table-area">
-					<Table />
+					<Table showTooltips={false} />
 				</div>
 
-				<div class="footnotes-area">{@html footnote}</div>
+				<div class="footnotes-area">{@html sourceTxt}<br />{@html footnote}</div>
 			</div>
 		</div>
 	{/if}
