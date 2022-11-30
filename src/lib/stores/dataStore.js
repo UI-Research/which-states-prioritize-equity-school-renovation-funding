@@ -2,7 +2,7 @@ import { writable, derived } from 'svelte/store';
 import { extent } from 'd3-array';
 
 import _states from '$data/states.csv';
-import _stateGridData from '$data/StateGrid.csv';
+import _stateGridData from '$data/StateGrid_wFootnotes.csv';
 import _stateFundingData from '$data/Funding_11_9_22_b.csv';
 
 export const currentState = writable('');
