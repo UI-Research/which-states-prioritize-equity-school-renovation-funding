@@ -8,7 +8,7 @@
 			name: 'State Funding Types',
 			display: 'Funding Types',
 			tooltipText:
-				'States can fund school capital projects in various ways, such as through direct grant aid, subsidized loans, or debt reimbursement, if they fund capital projects at all'
+				'States can fund school capital projects in various ways, such as through direct grant aid, subsidized loans, or debt reimbursement, if they fund capital projects at all.'
 		},
 		{
 			name: 'State Prioritization',
@@ -60,6 +60,7 @@
 		height: 100%;
 		font-size: 16px;
 		line-height: 150%;
+		margin-top: 52px;
 	}
 
 	.row {
@@ -71,11 +72,12 @@
 
 		&:first-of-type {
 			border-top: none;
+			padding-top: 0px;
 		}
 	}
 
 	.row-label {
-		width: 200px;
+		min-width: 180px;
 		flex: 1 1 0;
 		font-weight: 700;
 	}

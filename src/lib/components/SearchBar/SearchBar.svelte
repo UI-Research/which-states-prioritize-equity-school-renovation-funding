@@ -32,7 +32,9 @@
 </script>
 
 <div class="search-wrapper">
-	<div class="title">Explore School Construction Funding Practices by State</div>
+	<div class="title">
+		Explore School Construction Funding Practices <span style="white-space: nowrap;">by State</span>
+	</div>
 	<div class="search-bar-container theme-overrides">
 		<Select
 			items={$statesLookup.map((d) => d.name).sort()}
@@ -90,7 +92,7 @@
 		cursor: pointer;
 	}
 
-	@media screen and (max-width: 550px) {
+	@media screen and (max-width: 800px) {
 		.search-wrapper {
 			flex-direction: column;
 			gap: 16px;

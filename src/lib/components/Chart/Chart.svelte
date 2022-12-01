@@ -47,20 +47,6 @@
 				height={innerHeight / 2}
 				fill={color['blue-light']}
 			/>
-			<text
-				class="bg-label"
-				x={xScale.range()[1] * 0.95}
-				y={yScale.range()[1] + 10}
-				text-anchor="end"
-				dominant-baseline="hanging">PROGRESSIVE</text
-			>
-			<text
-				class="bg-label"
-				x={xScale.range()[1] * 0.95}
-				y={yScale.range()[0] - 10}
-				text-anchor="end">REGRESSIVE</text
-			>
-
 			<line
 				x1={xScale.range()[0]}
 				x2={xScale.range()[1]}
@@ -139,6 +125,23 @@
 					dominant-baseline="middle">{yTick}</text
 				>
 			{/each}
+		</g>
+
+		<!-- PROGRESSIVE/REGRESSIVE LABELS -->
+		<g transform={`translate(${margin.left},${margin.top})`}>
+			<text
+				class="bg-label"
+				x={xScale.range()[1] * 0.95}
+				y={yScale.range()[1] + 10}
+				text-anchor="end"
+				dominant-baseline="hanging">PROGRESSIVE</text
+			>
+			<text
+				class="bg-label"
+				x={xScale.range()[1] * 0.95}
+				y={yScale.range()[0] - 10}
+				text-anchor="end">REGRESSIVE</text
+			>
 		</g>
 	</svg>
 </div>
