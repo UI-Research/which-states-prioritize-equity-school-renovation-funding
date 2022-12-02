@@ -33,13 +33,14 @@
 				<div class="chart-wrapper">
 					<Chart />
 				</div>
+				<div class="chart-footnotes-area">{@html footnote}</div>
 			</div>
 
 			<div class="table-area">
 				<Table />
 			</div>
 
-			<div class="footnotes-area">{@html sourceTxt}<br />{@html footnote}</div>
+			<div class="footnotes-area">{@html sourceTxt}</div>
 		</div>
 	{/if}
 </div>
@@ -68,13 +69,14 @@
 					<div class="chart-wrapper">
 						<Chart />
 					</div>
+					<div class="chart-footnotes-area">{@html footnote}</div>
 				</div>
 
 				<div class="table-area">
 					<Table showTooltips={false} />
 				</div>
 
-				<div class="footnotes-area">{@html sourceTxt}<br />{@html footnote}</div>
+				<div class="footnotes-area">{@html sourceTxt}</div>
 			</div>
 		</div>
 	{/if}
@@ -102,6 +104,7 @@
 		grid-row: 1;
 		grid-column: 1 / span 5;
 		width: 100%;
+		// border: solid 1px red;
 	}
 
 	.state-display {
@@ -125,8 +128,16 @@
 	}
 
 	.footnotes-area {
+		width: 100%;
 		grid-row: 2;
 		grid-column: 1/-1;
+		margin-top: 36px;
+		font-size: 12px;
+		line-height: 18px;
+	}
+
+	.chart-footnotes-area {
+		width: 90%;
 		margin-top: 36px;
 		font-size: 12px;
 		line-height: 18px;
