@@ -19,7 +19,7 @@
 	};
 
 	const sourceTxt = `<b>Source:</b> Urban Institute analysis of Common Core of Data and Small Area Income and Poverty Estimates data.`;
-	const footnote = `<b>Notes:</b> National data from Arizona, Iowa, Massachusetts, New Jersey, New Mexico, New York, and Rhode Island are substantially different than state-reported data and should be treated with caution. Five-year rolling averages are presented for the middle year (e.g., 2015 data are an average of data from 2013 to 2017). Data presented here are for geographic school districts only; see the report for additional context.`;
+	const footnoteTxt = `<b>Notes:</b> National data from Arizona, Iowa, Massachusetts, New Jersey, New Mexico, New York, and Rhode Island are substantially different than state-reported data and should be treated with caution. Five-year rolling averages are presented for the middle year (e.g., 2015 data are an average of data from 2013 to 2017). Data presented here are for geographic school districts only; see the report for additional context.`;
 </script>
 
 <div class="tool-container">
@@ -31,7 +31,7 @@
 			<div class="chart-area">
 				<h1 class="state-display">{$currentState}</h1>
 				<div class="chart-wrapper">
-					<Chart />
+					<Chart {footnoteTxt} {sourceTxt} />
 				</div>
 			</div>
 
@@ -39,7 +39,7 @@
 				<Table />
 			</div>
 
-			<div class="footnotes-area">{@html sourceTxt}<br />{@html footnote}</div>
+			<!-- <div class="footnotes-area">{@html sourceTxt}</div> -->
 		</div>
 	{/if}
 </div>
@@ -57,7 +57,7 @@
 	{#if $currentState !== ''}
 		<!-- Social Chart -->
 		<div id="social-chart">
-			<ChartSocial {sourceTxt} {footnote} />
+			<ChartSocial {sourceTxt} {footnoteTxt} />
 		</div>
 
 		<!-- Full Tool -->
@@ -66,15 +66,16 @@
 				<div class="chart-area">
 					<h1 class="state-display">{$currentState}</h1>
 					<div class="chart-wrapper">
-						<Chart />
+						<Chart {footnoteTxt} {sourceTxt} />
 					</div>
+					<!-- <div class="chart-footnotes-area">{@html footnote}</div> -->
 				</div>
 
 				<div class="table-area">
 					<Table showTooltips={false} />
 				</div>
 
-				<div class="footnotes-area">{@html sourceTxt}<br />{@html footnote}</div>
+				<!-- <div class="footnotes-area">{@html sourceTxt}</div> -->
 			</div>
 		</div>
 	{/if}
@@ -102,6 +103,7 @@
 		grid-row: 1;
 		grid-column: 1 / span 5;
 		width: 100%;
+		// border: solid 1px red;
 	}
 
 	.state-display {
@@ -125,6 +127,7 @@
 	}
 
 	.footnotes-area {
+		width: 100%;
 		grid-row: 2;
 		grid-column: 1/-1;
 		margin-top: 36px;
