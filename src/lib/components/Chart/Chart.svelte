@@ -8,6 +8,9 @@
 
 	import { color } from '$data/variables.json';
 
+	export let footnoteTxt;
+	export let sourceTxt;
+
 	const width = 300;
 	const height = 300;
 	const margin = { top: 40, right: 30, bottom: 40, left: 35 };
@@ -107,7 +110,7 @@
 
 		<!-- Y -->
 		<g transform={`translate(${margin.left},${margin.top})`}>
-			<text class="y-axis-label" x="-30" y="-10">Funding Ratio</text>
+			<text class="y-axis-label" x="-33" y="-10">Funding Ratio</text>
 			{#each yTicks as yTick}
 				<line
 					class="axis-tick"
@@ -122,7 +125,7 @@
 					x={-7}
 					y={yScale(yTick)}
 					text-anchor="end"
-					dominant-baseline="middle">{yTick}</text
+					dominant-baseline="middle">{yTick.toFixed(2)}</text
 				>
 			{/each}
 		</g>
@@ -144,12 +147,19 @@
 			>
 		</g>
 	</svg>
+	<div class="chart-footnotes-area">{@html sourceTxt} <br /><br /> {@html footnoteTxt}</div>
 </div>
 
 <style lang="scss">
 	.chart-container {
 		margin-top: 16px;
 		// border: solid 1px #ccc;
+	}
+
+	.chart-footnotes-area {
+		width: 100%;
+		font-size: 12px;
+		line-height: 18px;
 	}
 
 	.chart-title {

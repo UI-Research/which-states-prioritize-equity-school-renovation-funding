@@ -6,7 +6,7 @@
 
 	import { color } from '$data/variables.json';
 
-	export let footnote;
+	export let footnoteTxt;
 	export let sourceTxt;
 
 	const width = 1200;
@@ -147,7 +147,7 @@
 	<div class="logo-container">
 		<img src={urbanLogo} alt="" />
 	</div>
-	<div class="footnote">{@html sourceTxt}<br />{@html footnote}</div>
+	<div class="footnote">{@html sourceTxt}<br />{@html footnoteTxt}</div>
 </div>
 
 <style lang="scss">
