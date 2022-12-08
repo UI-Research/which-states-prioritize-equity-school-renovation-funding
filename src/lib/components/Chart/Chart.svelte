@@ -34,7 +34,7 @@
 			.y((d) => yScale(d.value));
 	}
 
-	$: asterick = [
+	$: asterisk = [
 		'Arizona',
 		'Iowa',
 		'Massachusetts',
@@ -90,7 +90,7 @@
 					x={xScale(2015) + 3}
 					y={yScale(data.slice(-1)[0].value)}
 					dominant-baseline="middle"
-					fill={color.blue}>{$stateData.abbrev}{asterick}</text
+					fill={color.blue}>{$stateData.abbrev}{asterisk}</text
 				>
 			{/key}
 		</g>
