@@ -19,7 +19,20 @@
 	};
 
 	const sourceTxt = `<b>Source:</b> Urban Institute analysis of Common Core of Data and Small Area Income and Poverty Estimates data.`;
-	const footnoteTxt = `<b>Notes:</b> National data from Arizona, Iowa, Massachusetts, New Jersey, New Mexico, New York, and Rhode Island are substantially different than state-reported data and should be treated with caution. Five-year rolling averages are presented for the middle year (e.g., 2015 data are an average of data from 2013 to 2017). Data presented here are for geographic school districts only; see the report for additional context.`;
+	const footnoteBase =
+		'Five-year rolling averages are presented for the middle year (e.g., 2015 data are an average of data from 2013 to 2017). Data presented here are for geographic school districts only; see the report for additional context.';
+	$: footnoteExtra = [
+		'Arizona',
+		'Iowa',
+		'Massachusetts',
+		'New Jersey',
+		'New Mexico',
+		'New York',
+		'Rhode Island'
+	].includes($currentState)
+		? 'Asterisk denotes national data are substantially different than state-reported data and should be treated with caution. '
+		: '';
+	$: footnoteTxt = `<b>Notes:</b> ${footnoteExtra}${footnoteBase}`;
 </script>
 
 <div class="tool-container">
@@ -38,8 +51,6 @@
 			<div class="table-area">
 				<Table />
 			</div>
-
-			<!-- <div class="footnotes-area">{@html sourceTxt}</div> -->
 		</div>
 	{/if}
 </div>
@@ -68,14 +79,11 @@
 					<div class="chart-wrapper">
 						<Chart {footnoteTxt} {sourceTxt} />
 					</div>
-					<!-- <div class="chart-footnotes-area">{@html footnote}</div> -->
 				</div>
 
 				<div class="table-area">
 					<Table showTooltips={false} />
 				</div>
-
-				<!-- <div class="footnotes-area">{@html sourceTxt}</div> -->
 			</div>
 		</div>
 	{/if}

@@ -13,7 +13,7 @@
 
 	const width = 300;
 	const height = 300;
-	const margin = { top: 40, right: 30, bottom: 40, left: 35 };
+	const margin = { top: 40, right: 35, bottom: 40, left: 35 };
 	const innerHeight = height - margin.top - margin.bottom;
 	const innerWidth = width - margin.left - margin.right;
 
@@ -33,6 +33,18 @@
 			.x((d) => xScale(d.year))
 			.y((d) => yScale(d.value));
 	}
+
+	$: asterick = [
+		'Arizona',
+		'Iowa',
+		'Massachusetts',
+		'New Jersey',
+		'New Mexico',
+		'New York',
+		'Rhode Island'
+	].includes($currentState)
+		? '*'
+		: '';
 </script>
 
 <div class="chart-container" style:width={`${width}px`}>
@@ -78,7 +90,7 @@
 					x={xScale(2015) + 3}
 					y={yScale(data.slice(-1)[0].value)}
 					dominant-baseline="middle"
-					fill={color.blue}>{$stateData.abbrev}</text
+					fill={color.blue}>{$stateData.abbrev}{asterick}</text
 				>
 			{/key}
 		</g>
