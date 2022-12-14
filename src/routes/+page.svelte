@@ -7,6 +7,7 @@
 	let height = null;
 	const updateHeight = () => {
 		$pymChildStore.sendHeight();
+		// console.log('height', height);
 	};
 
 	$: height && updateHeight();
@@ -20,6 +21,6 @@
 <style>
 	.content {
 		max-width: 1200px;
-		margin: 60px auto;
+		margin: 0px auto;
 	}
 </style>
