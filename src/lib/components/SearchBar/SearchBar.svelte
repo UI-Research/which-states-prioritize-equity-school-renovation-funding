@@ -44,6 +44,7 @@
 			Icon={IconSearch}
 			iconProps={{ showIcon: $currentState === '' }}
 			ClearIcon={IconClose}
+			listPlacement="bottom"
 			{containerStyles}
 			{inputStyles}
 		/>
