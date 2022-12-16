@@ -21,6 +21,8 @@
 <style>
 	.content {
 		max-width: 1200px;
+		min-height: 350px;
 		margin: 0px auto;
+		/* border: solid 1px red; */
 	}
 </style>
