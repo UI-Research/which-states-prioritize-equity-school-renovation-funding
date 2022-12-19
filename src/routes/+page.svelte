@@ -5,24 +5,31 @@
 	import { PymChild, pymChildStore } from '$components/helpers/PymChild';
 
 	let height = null;
+	let width = null;
 	const updateHeight = () => {
 		$pymChildStore.sendHeight();
-		// console.log('height', height);
 	};
 
 	$: height && updateHeight();
+
+	// set min height of content box so dropdown does not get cutoff in iframe
+	$: minHeight = width < 800 ? '430px' : '350px';
 </script>
 
 <PymChild />
-<div class="content" bind:clientHeight={height}>
+<div
+	class="content"
+	bind:clientHeight={height}
+	bind:clientWidth={width}
+	style:min-height={minHeight}
+>
 	<Main />
 </div>
 
 <style>
 	.content {
 		max-width: 1200px;
-		min-height: 350px;
 		margin: 0px auto;
-		/* border: solid 1px red; */
+		border: solid 1px red;
 	}
 </style>
