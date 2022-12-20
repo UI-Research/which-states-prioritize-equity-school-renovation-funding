@@ -30,6 +30,6 @@
 	.content {
 		max-width: 1200px;
 		margin: 0px auto;
-		border: solid 1px red;
+		/* border: solid 1px red; */
 	}
 </style>
