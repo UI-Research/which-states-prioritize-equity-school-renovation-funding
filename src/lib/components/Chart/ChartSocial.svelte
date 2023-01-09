@@ -119,7 +119,7 @@
 
 		<!-- Y -->
 		<g transform={`translate(${margin.left},${margin.top})`}>
-			<text class="y-axis-label" x="-19" y="-10">Funding Ratio</text>
+			<text class="y-axis-label" x="-19" y="-10">Funding ratio</text>
 			{#each yTicks as yTick}
 				<line
 					class="axis-tick"

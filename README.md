@@ -22,4 +22,4 @@ The tool is hosted via github pages. To push the latest updates, run
 npm run deploy
 ```
 
-This command will run `/scripts/deployToGithub.sh` which builds the page and pushes the update to github. The built site is in the `docs` folder.
+This command will run `/scripts/deployToGithub.sh` which builds the page and pushes the update to github. The built site will be in the `docs` folder.
