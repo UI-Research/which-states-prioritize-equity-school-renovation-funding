@@ -1,38 +1,25 @@
-# create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+# Urban - K12 Expenditures State Search Tool
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+The tool is built using Svelte. Project files are found in `src/` directory.
+
+To run the development server:
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Site data
 
-To create a production version of your app:
+The data for the tool is stored locally in `src/lib/data`
+
+## Deploy
+
+The tool is hosted via github pages. To push the latest updates, run
 
 ```bash
-npm run build
+npm run deploy
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+This command will run `/scripts/deployToGithub.sh` which builds the page and pushes the update to github. The built site is in the `docs` folder.
