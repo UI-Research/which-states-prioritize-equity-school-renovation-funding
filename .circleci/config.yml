@@ -6,18 +6,18 @@ executors:
     working_directory: ~/repo
 jobs:
   build_stg:
-  executor: my-executor
-  working_directory: ~/repo
-  steps:
-    - checkout
-    - run:
-        name: build project
-        command: |
-          npm install
-          npm run build
-    - persist_to_workspace:
-        root: "~"
-        paths: repo/docs
+    executor: my-executor
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: build project
+          command: |
+            npm install
+            npm run build
+      - persist_to_workspace:
+          root: "~"
+          paths: repo/docs
   deploy_stg:
     steps:
       - attach_workspace:
