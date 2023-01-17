@@ -12,6 +12,7 @@ jobs:
           command: |
             npm install
             npm run build
+            sudo apt install rsync
             rsync -avz --exclude '.git' -e "ssh -v -p 20022" ~/repo/docs $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/prioritize-funding/
 workflows:
   version: 2
