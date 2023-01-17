@@ -4,6 +4,7 @@ executors:
     docker:
       - image: node
     working_directory: ~/repo
+
 jobs:
   build_stg:
     executor: my-executor
@@ -15,13 +16,6 @@ jobs:
           command: |
             npm install
             npm run build
-      - persist_to_workspace:
-          root: "~"
-          paths: repo/docs
-  deploy_stg:
-    steps:
-      - attach_workspace:
-          at: ./docs
       - run: mkdir ~/.ssh
       - run: ssh-keyscan $SSH_STAGE_HOST >> ~/.ssh/known_hosts
       - run: sudo apt install rsync
@@ -32,14 +26,12 @@ jobs:
 
 workflows:
   version: 2.1
-  build-and-deploy:
-  jobs:
-    - build_stg:
-        context:
-          -apps
-    - deploy_stg:
-        requires:
-          - build_stg
-        filters:
-          branches:
-            only: add-circle
+  build_stg:
+    jobs:
+      - build_stg:
+          context:
+            - apps
+          filters:
+            branches:
+              only: add-circle
+
