@@ -2,7 +2,7 @@ version: 2.1
 executors:
   my-executor:
     docker:
-      - image: circleci/node
+      - image: node
     working_directory: ~/repo
 
 jobs:
@@ -19,13 +19,10 @@ jobs:
       - run: sudo apt install rsync
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
-      - add_ssh_keys:
-                fingerprints:
-                  - "56:74:80:27:71:5f:9a:96:c6:17:90:c3:16:69:cb:62"
       - run:
           name: Deploy over ssh
           command: |
-            rsync -avz --exclude '.git' -e "ssh -vvv -p 20022" ~/repo/docs $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/prioritize-funding/
+            rsync -avz --exclude '.git' -e "ssh -v -p 20022" ~/repo/docs $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/prioritize-funding/
 
 workflows:
   version: 2.1
