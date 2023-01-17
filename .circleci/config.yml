@@ -19,6 +19,7 @@ jobs:
       - run: sudo apt install rsync
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
+      - run: ssh-keyscan $SSH_STAGE_HOST >> ~/.ssh/known_hosts
       - run:
           name: Deploy over ssh
           command: |
