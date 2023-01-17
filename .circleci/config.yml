@@ -20,12 +20,14 @@ jobs:
         paths: repo/docs
   deploy_stg:
     steps:
-      -attach_workspace:
-        at: ./docs
-      -run: sudo apt install rsync
-      -run:
-        name: Deploy over ssh
-        command: |
+      - attach_workspace:
+          at: ./docs
+      - run: mkdir ~/.ssh
+      - run: ssh-keyscan $SSH_STAGE_HOST >> ~/.ssh/known_hosts
+      - run: sudo apt install rsync
+      - run:
+          name: Deploy over ssh
+          command: |
             rsync -avz --exclude '.git' -e "ssh -v -p 20022" ~/repo/docs $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/prioritize-funding/
 workflows:
   version: 2
