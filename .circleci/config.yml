@@ -1,0 +1,62 @@
+version: 2.1
+executors:
+  my-executor:
+    docker:
+      - image: cimg/node:19.3.0
+    working_directory: ~/repo
+
+jobs:
+  build_stg:
+    executor: my-executor
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: build project
+          command: |
+            npm install
+            npm run build
+      - run: sudo apt-get update
+      - run: sudo apt-get upgrade
+      - run: sudo apt-get install rsync
+      - run:
+          name: Deploy over ssh
+          command: |
+            rsync -avz --exclude '.git' -e "ssh -v -p 20022 -o StrictHostKeyChecking=no" ~/repo/docs/ $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/which-states-prioritize-equity-school-renovation-funding/
+  build_prod:
+    executor: my-executor
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: build project
+          command: |
+            npm install
+            npm run build
+      - run: sudo apt-get update
+      - run: sudo apt-get upgrade
+      - run: sudo apt-get install rsync
+      - run:
+          name: Deploy over ssh
+          command: |
+            rsync -avz --exclude '.git' -e "ssh -v -p 20022 -o StrictHostKeyChecking=no" ~/repo/docs/ $SSH_USER@$SSH_PROD_HOST:/var/www/apps.urban.org/features/which-states-prioritize-equity-school-renovation-funding/
+
+workflows:
+  version: 2.1
+  build_stg:
+    jobs:
+      - build_stg:
+          context:
+            - apps
+          filters:
+            branches:
+              only: staging
+  build_prod:
+    jobs:
+      - build_prod:
+          context:
+            - apps
+          filters:
+            branches:
+              only: main
+
