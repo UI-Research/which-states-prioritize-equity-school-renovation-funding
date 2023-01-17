@@ -22,6 +22,6 @@ npm run build
 ```
 in order to build the application in the `/docs` folder. To deploy to our staging and production environment, we required a change to the prefixer in the `svelte.config.js` file which will break the github pages deployment process. It could be possible to accommodate both in the future if this is desired.
 
-The tool had previously been hosted via github pages. That process required running`npm run deploy`.
+It is not required to run and commit the built site in this github repository, but having the files in the repository does no harm. 
 
-This command will run `/scripts/deployToGithub.sh` which builds the page and pushes the update to github. The built site will be in the `docs` folder.
+The tool had previously been hosted via github pages. That process required running`npm run deploy`. This `deploy` command will run `/scripts/deployToGithub.sh` which builds the page and pushes the update to github. The built site will be in the `docs` folder.
