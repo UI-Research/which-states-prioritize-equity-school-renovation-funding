@@ -29,6 +29,7 @@ jobs:
           name: Deploy over ssh
           command: |
             rsync -avz --exclude '.git' -e "ssh -v -p 20022" ~/repo/docs $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/prioritize-funding/
+
 workflows:
   version: 2.1
     build-and-deploy:
@@ -42,4 +43,3 @@ workflows:
           filters:
             branches:
               only: add-circle
-
