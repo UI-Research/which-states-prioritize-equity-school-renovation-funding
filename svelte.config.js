@@ -20,7 +20,7 @@ const config = {
 		}),
 		paths: {
 			// change below to your repo name
-			base: dev ? '' : '/which-states-prioritize-equity-school-renovation-funding'
+			base: dev ? '' : '/features/which-states-prioritize-equity-school-renovation-funding'
 		}
 	}
 };
