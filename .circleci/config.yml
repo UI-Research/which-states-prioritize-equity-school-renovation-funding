@@ -16,9 +16,9 @@ jobs:
           command: |
             npm install
             npm run build
-      - run: sudo apt install rsync
-      - run: sudo apt-get update
-      - run: sudo apt-get upgrade
+      - run: apt install rsync
+      - run: apt-get update
+      - run: apt-get upgrade
       - run:
           name: Deploy over ssh
           command: |
