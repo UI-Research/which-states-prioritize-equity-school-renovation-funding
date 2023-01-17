@@ -30,12 +30,17 @@ jobs:
           command: |
             rsync -avz --exclude '.git' -e "ssh -v -p 20022" ~/repo/docs $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/prioritize-funding/
 workflows:
-  version: 2
-  build_stg:
+  version: 2.1
     jobs:
-      - build_stg:
-          context:
-            - apps
-          filters:
-            branches:
-              only: add-circle
+      build-and-deploy-stg:
+      jobs:
+        - build_stg:
+            context:
+              -apps
+        - deploy_stg:
+            requires:
+              - build_stg
+            filters:
+              branches:
+                only: add-circle
+
