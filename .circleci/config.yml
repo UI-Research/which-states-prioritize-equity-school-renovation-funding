@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Deploy over ssh
           command: |
-            rsync -avz --exclude '.git' -e "ssh -v -p 20022 -o StrictHostKeyChecking=no" ~/repo/docs $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/prioritize-funding/
+            rsync -avz --exclude '.git' -e "ssh -v -p 20022 -o StrictHostKeyChecking=no" ~/repo/ $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/prioritize-funding/
 
 workflows:
   version: 2.1
