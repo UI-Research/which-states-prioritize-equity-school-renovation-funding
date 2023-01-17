@@ -32,14 +32,14 @@ jobs:
 
 workflows:
   version: 2.1
-    build-and-deploy:
-    jobs:
-      - build_stg:
-          context:
-            -apps
-      - deploy_stg:
-          requires:
-            - build_stg
-          filters:
-            branches:
-              only: add-circle
+  build-and-deploy:
+  jobs:
+    - build_stg:
+        context:
+          -apps
+    - deploy_stg:
+        requires:
+          - build_stg
+        filters:
+          branches:
+            only: add-circle
