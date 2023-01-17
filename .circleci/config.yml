@@ -16,7 +16,6 @@ jobs:
           command: |
             npm install
             npm run build
-      - run: mkdir ~/.ssh
       - run: ssh-keyscan $SSH_STAGE_HOST >> ~/.ssh/known_hosts
       - run: sudo apt install rsync
       - run:
