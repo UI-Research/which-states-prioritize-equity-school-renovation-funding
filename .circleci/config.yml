@@ -19,6 +19,9 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
       - run: sudo apt-get install rsync
+      - add_ssh_keys:
+          fingerprints:
+            - "56:74:80:27:71:5f:9a:96:c6:17:90:c3:16:69:cb:62"
       - run:
           name: Deploy over ssh
           command: |
