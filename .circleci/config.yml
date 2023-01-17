@@ -1,10 +1,13 @@
 version: 2.1
-
+executors:
+  my-executor:
+    docker:
+      - image: node
+    working_directory: ~/repo
 jobs:
   build_stg:
-    docker:
-      - image: circleci/node
-    working_directory: ~/repo
+  executor: my-executor
+  working_directory: ~/repo
     steps:
       - checkout
       - run:
@@ -12,7 +15,17 @@ jobs:
           command: |
             npm install
             npm run build
-            sudo apt install rsync
+      - persist_to_workspace:
+          root: "~"
+          paths: repo/docs
+  deploy_stg:
+    steps:
+      -attach_workspace:
+        at: ./docs
+      -run: sudo apt install rsync
+      -run:
+        name: Deploy over ssh
+        command: |
             rsync -avz --exclude '.git' -e "ssh -v -p 20022" ~/repo/docs $SSH_USER@$SSH_STAGE_HOST:/var/www/apps.urban.org/features/prioritize-funding/
 workflows:
   version: 2
