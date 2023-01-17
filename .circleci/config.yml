@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build_stg:
     docker:
-      - image: circleci/node:16
+      - image: node
     working_directory: ~/repo
     steps:
       - checkout
