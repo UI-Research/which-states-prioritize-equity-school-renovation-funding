@@ -51,7 +51,7 @@ workflows:
           filters:
             branches:
               only: staging
-    build_prod:
+  build_prod:
     jobs:
       - build_prod:
           context:
