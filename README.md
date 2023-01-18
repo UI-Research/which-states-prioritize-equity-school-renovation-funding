@@ -20,7 +20,7 @@ The tool currently uses CircleCI for deployment. This process runs
 ```bash
 npm run build 
 ```
-in order to build the application in the `/docs` folder. To deploy to our staging and production environment, we required a change to the prefixer in the `svelte.config.js` file which will break the github pages deployment process. It could be possible to accommodate both in the future if this is desired.
+in order to build the application in the `/docs` folder. To deploy to our [staging](https://apps-staging.urban.org/features/which-states-prioritize-equity-school-renovation-funding) and [production](https://apps.urban.org/features/which-states-prioritize-equity-school-renovation-funding) environment, we required a change to the prefixer in the `svelte.config.js` file which will break the github pages deployment process. It could be possible to accommodate both in the future if this is desired.
 
 It is not required to run and commit the built site in this github repository, but having the files in the repository does no harm. 
 
