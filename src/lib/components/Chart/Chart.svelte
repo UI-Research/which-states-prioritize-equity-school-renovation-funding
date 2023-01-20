@@ -18,9 +18,9 @@
 	const innerWidth = width - margin.left - margin.right;
 
 	// defaults
-	const xScale = scaleLinear().domain([1995, 2015]).range([0, innerWidth]);
-	const xTicks = [...Array(2016 - 1995)].map((_, i) => 1995 + i);
-	const xTickLabels = [1995, 2000, 2005, 2010, 2015];
+	const xScale = scaleLinear().domain([1997, 2015]).range([0, innerWidth]);
+	const xTicks = [...Array(2016 - 1997)].map((_, i) => 1997 + i);
+	const xTickLabels = [1997, 2000, 2005, 2010, 2015];
 	let yScale = scaleLinear().domain([0.1, 1.9]).range([innerHeight, 0]);
 	let yTicks = [1];
 	let pathLine;
@@ -98,7 +98,7 @@
 		<!----- AXES ----->
 		<!-- X -->
 		<g transform={`translate(${margin.left},${margin.top + innerHeight})`}>
-			<line x1={xScale(1995)} x2={xScale(2015)} y1={0} y2={0} stroke="#000000" />
+			<line x1={xScale(1997)} x2={xScale(2015)} y1={0} y2={0} stroke="#000000" />
 			{#each xTicks as xTick}
 				<line
 					class="axis-tick"
