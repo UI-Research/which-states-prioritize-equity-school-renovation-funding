@@ -35,6 +35,14 @@ p {
 	margin: 0;
 }
 
+a {
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
 .col-12 {
 	/* 12 col grid with max width at 1600px */
 	display: grid;

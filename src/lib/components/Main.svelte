@@ -20,7 +20,7 @@
 
 	const sourceTxt = `<b>Source:</b> Urban Institute analysis of Common Core of Data and Small Area Income and Poverty Estimates data.`;
 	const footnoteBase =
-		'Five-year rolling averages are presented for the middle year (e.g., 2015 data are an average of data from 2013 to 2017). Data presented here are for geographic school districts only; see the report for additional context.';
+		'Five-year rolling averages are presented for the middle year (e.g., 2015 data are an average of data from 2013 to 2017). Data presented here are for geographic school districts only; see the <a href="https://www.urban.org/research/publication/assessing-national-landscape-capital-expenditures-public-school-districts" target="_blank">report</a> for additional context.';
 	$: footnoteExtra = [
 		'Arizona',
 		'Iowa',
@@ -68,7 +68,10 @@
 	{#if $currentState !== ''}
 		<!-- Social Chart -->
 		<div id="social-chart">
-			<ChartSocial {sourceTxt} {footnoteTxt} />
+			<ChartSocial
+				{sourceTxt}
+				footnoteTxt={footnoteTxt.replace(/<a href(.[^>]*)>/g, '').replace(/<\/a>/g, '')}
+			/>
 		</div>
 
 		<!-- Full Tool -->
@@ -77,7 +80,10 @@
 				<div class="chart-area">
 					<h1 class="state-display">{$currentState}</h1>
 					<div class="chart-wrapper">
-						<Chart {footnoteTxt} {sourceTxt} />
+						<Chart
+							{sourceTxt}
+							footnoteTxt={footnoteTxt.replace(/<a href(.[^>]*)>/g, '').replace(/<\/a>/g, '')}
+						/>
 					</div>
 				</div>
 
